@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ongles Spa Nhi Nhi | Salon d'ongles à Saint-Bruno-de-Montarville</title>
+<meta name="description" content="Salon de beauté des ongles à Saint-Bruno-de-Montarville : manucure, pédicure spa, pose en gel et en acrylique, nail art. Sur rendez-vous au 450 690-3689.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:wght@400;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vin:#2a0410;        /* fond le plus profond */
+  --bordeaux:#5c0a1c;
+  --rouge:#a8132f;
+  --braise:#e2394f;
+  --prune:#8a1f52;      /* couleur de la bouteille */
+  --lueur:#f6c8a4;      /* bokeh doré */
+  --creme:#fbeee9;
+  --texte:#fff4f1;
+  --texte-doux:#f0cfd2;
+  --display:'Italiana','Didot','Bodoni 72',Georgia,serif;
+  --etiquette:'Josefin Sans','Futura','Century Gothic',sans-serif;
+  --corps:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --max:1180px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);background:var(--vin)}
+body{font-family:var(--corps);color:var(--texte);background:var(--vin);line-height:1.6;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lueur);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05}
+h3{font-family:var(--etiquette);font-weight:600;letter-spacing:.02em}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:.4em}
+h3{font-size:1.5rem}
+.intro{color:var(--texte-doux);max-width:58ch}
+
+/* ----- Fonds bokeh (les formes radiales de la carte) ----- */
+.bokeh{position:relative;isolation:isolate;overflow:hidden}
+.bokeh::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(255,120,120,.45) 0 4%, transparent 9%),
+    radial-gradient(circle at 22% 70%, rgba(246,200,164,.28) 0 3%, transparent 7%),
+    radial-gradient(circle at 78% 12%, rgba(255,90,110,.35) 0 5%, transparent 11%),
+    radial-gradient(circle at 92% 62%, rgba(246,200,164,.25) 0 3.5%, transparent 8%),
+    radial-gradient(circle at 60% 88%, rgba(226,57,79,.35) 0 6%, transparent 13%),
+    radial-gradient(ellipse at 30% 40%, var(--rouge) 0%, var(--bordeaux) 45%, var(--vin) 100%);
+  filter:blur(2px)}
+
+/* ----- En-tête ----- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s}
+header.plein{background:rgba(42,4,16,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav{display:flex;align-items:center;justify-content:flex-end;height:72px}
+.logo{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.logo{color:var(--creme)}
+.logo img{display:block;height:44px;width:auto;align-self:flex-start}
+footer .logo img{height:62px;width:auto;max-width:none;align-self:flex-start}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+.nav ul a{text-decoration:none;font-weight:500;font-size:.95rem;opacity:.85}
+.nav ul a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.5em;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 1rem var(--corps);white-space:nowrap;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-plein{background:linear-gradient(135deg,var(--braise),var(--rouge));color:#fff;box-shadow:0 8px 24px -8px rgba(226,57,79,.7)}
+.btn-ligne{background:rgba(255,255,255,.06);color:var(--texte);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.nav .btn{padding:.6em 1.2em;font-size:.9rem}
+.menu-btn{display:none;background:none;border:0;color:var(--texte);font-size:1.6rem;cursor:pointer}
+
+/* ----- Hero ----- */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--vin)}
+.hero-img{position:absolute;inset:0;background:url('hero-mains.jpg') 70% center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,4,16,.92) 0%,rgba(60,6,22,.7) 38%,rgba(42,4,16,0) 70%)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero-txt{max-width:560px;padding:120px 0 80px}
+.hero .marque{display:block;width:clamp(280px,40vw,560px);height:auto;filter:drop-shadow(0 0 36px rgba(226,57,79,.5))}
+.hero h1{margin:0 0 1.1em;line-height:0}
+.hero p.accroche{font-size:1.15rem;color:var(--texte-doux);max-width:40ch;margin-bottom:1.8em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .adresse{margin-top:2.2em;font-size:.95rem;color:var(--texte-doux)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-img{animation:zoom 14s ease-out both}
+  .hero-txt>*{animation:monte .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-txt>*:nth-child(2){animation-delay:.12s}
+  .hero-txt>*:nth-child(3){animation-delay:.24s}
+  .hero-txt>*:nth-child(4){animation-delay:.36s}
+  }
+@keyframes zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes monte{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+section{padding:clamp(72px,10vw,120px) 0}
+
+/* ----- Le salon ----- */
+.salon{background:linear-gradient(180deg,var(--vin),#3a0716)}
+.salon-grille{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,5vw,72px);align-items:center}
+.salon-txt p{color:var(--texte-doux);margin-bottom:1em;max-width:52ch}
+.salon-txt ul{list-style:none;margin-top:1.6em;display:grid;gap:.7em}
+.salon-txt li{display:flex;gap:.8em;align-items:baseline}
+.salon-txt li::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:radial-gradient(circle,var(--lueur),var(--braise));box-shadow:0 0 10px var(--braise);transform:translateY(-1px)}
+.mosaique{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:clamp(420px,52vw,620px)}
+.mosaique figure{overflow:hidden;border-radius:22px;position:relative}
+.mosaique figure:first-child{grid-row:1/3;border-radius:200px 200px 22px 22px}
+.mosaique img{width:100%;height:100%;object-fit:cover}
+.mosaique figcaption{position:absolute;left:12px;bottom:12px;font-size:.8rem;padding:.35em .8em;border-radius:999px;background:rgba(42,4,16,.75);backdrop-filter:blur(6px)}
+
+/* ----- Réalisations ----- */
+  .realisations{padding:clamp(56px,7vw,88px) 0}
+.realisations .tete{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.realisations .tete h2{margin-bottom:.15em}
+.scene{position:relative;height:clamp(300px,34vw,400px);touch-action:pan-y;user-select:none}
+.scene figure{position:absolute;top:0;left:50%;height:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;
+  transform:translateX(-50%) scale(.72);opacity:0;pointer-events:none;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .55s;box-shadow:0 20px 44px -22px rgba(0,0,0,.8)}
+.scene figure img{width:100%;height:100%;object-fit:cover}
+.scene figure.centre{transform:translateX(-50%) scale(1);opacity:1;z-index:3;pointer-events:auto}
+.scene figure.avant{transform:translateX(-138%) scale(.8);opacity:.35;z-index:2;pointer-events:auto;cursor:pointer}
+.scene figure.apres{transform:translateX(38%) scale(.8);opacity:.35;z-index:2;pointer-events:auto;cursor:pointer}
+.fleches{display:flex;gap:10px}
+.fleches button{width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.08);color:var(--texte);font-size:1.3rem;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.fleches button:hover{background:rgba(255,255,255,.16)}
+@media (max-width:600px){.scene figure.avant{transform:translateX(-112%) scale(.74)}.scene figure.apres{transform:translateX(12%) scale(.74)}}
+@media (prefers-reduced-motion:reduce){.scene figure{transition:none}}
+.fb{margin-top:28px;text-align:center;color:var(--texte-doux);font-size:.95rem}
+.fb a{color:var(--lueur)}
+
+/* ----- Soins ----- */
+.soins{position:relative;overflow:hidden}
+.soins.bokeh::before{transform:scale(-1,-1)}
+.soins .wrap{position:relative;z-index:1}
+.onglets{display:flex;gap:clamp(18px,4vw,48px);margin:34px 0 30px;flex-wrap:wrap}
+.onglets button{background:none;border:0;cursor:pointer;color:var(--texte);opacity:.42;font-family:var(--display);font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1;padding:0 0 12px;position:relative;transition:opacity .3s}
+.onglets button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;border-radius:3px;background:linear-gradient(90deg,var(--braise),var(--lueur));transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.onglets button:hover{opacity:.75}
+.onglets button[aria-selected="true"]{opacity:1}
+.onglets button[aria-selected="true"]::after{transform:scaleX(1)}
+.panneau{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:center}
+.panneau[hidden]{display:none}
+.panneau .photo{position:relative;aspect-ratio:4/5;max-height:440px;border-radius:220px 220px 26px 26px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.panneau .photo img{width:100%;height:100%;object-fit:cover}
+.panneau .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(42,4,16,.55))}
+.panneau .sous{font-family:var(--etiquette);font-size:1.05rem;letter-spacing:.06em;color:var(--lueur);margin-bottom:.6em}
+.panneau p.desc{color:var(--texte-doux);max-width:46ch;margin-bottom:1.6em}
+.pilules{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-bottom:2em}
+.pilules li{padding:.65em 1.15em;border-radius:14px;font-weight:500;font-size:.97rem;line-height:1.3;
+  background:linear-gradient(135deg,rgba(226,57,79,.28),rgba(138,31,82,.22));box-shadow:inset 0 0 0 1px rgba(255,160,170,.3);transition:transform .2s,background .2s}
+.pilules li:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(226,57,79,.5),rgba(138,31,82,.4))}
+@media (prefers-reduced-motion:no-preference){
+  .panneau.entre .photo{animation:photoIn .6s cubic-bezier(.2,.7,.2,1) both}
+  .panneau.entre .pilules li{animation:piluleIn .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*55ms + .1s)}
+}
+@keyframes photoIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes piluleIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (max-width:760px){.panneau{grid-template-columns:1fr}.panneau .photo{max-height:340px;aspect-ratio:1/1;border-radius:170px 170px 22px 22px}}
+
+/* ----- Pied de page ----- */
+footer{position:relative;overflow:hidden;padding:clamp(48px,6vw,72px) 0 28px;background:var(--vin);color:var(--texte-doux);font-size:.95rem}
+footer .fond{position:absolute;inset:0;background:url('hero-vernis.jpg') 80% center/cover no-repeat}
+footer::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(28,2,10,.97) 0%,rgba(28,2,10,.88) 55%,rgba(28,2,10,.5) 100%)}
+footer .wrap{position:relative;z-index:2}
+.pied{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;align-items:start}
+.pied h3{font-size:1.05rem;color:var(--texte);margin-bottom:.7em;letter-spacing:.06em}
+.pied a{text-decoration:none}
+.pied p a:hover{color:var(--texte)}
+.pied .tel{font-family:var(--display);font-size:clamp(1.7rem,3vw,2.2rem);color:var(--texte);display:block;margin-bottom:16px;line-height:1.1}
+.reseaux{display:flex;flex-wrap:wrap;gap:10px}
+.reseaux a{padding:.55em 1.1em;border-radius:14px;font-weight:500;color:var(--texte);background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.reseaux a:hover{background:rgba(255,255,255,.14)}
+.copy{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;opacity:.7}
+@media (max-width:760px){.pied{grid-template-columns:1fr}}
+
+/* ----- Responsive ----- */
+@media (max-width:900px){
+  .salon-grille{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav ul{position:fixed;top:calc(72px + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;gap:0;background:rgba(42,4,16,.97);padding:10px 0 20px;display:none}
+  .nav ul.ouvert{display:flex}
+  .nav ul li{width:100%;text-align:center}
+  .nav ul a{display:block;padding:14px}
+  .menu-btn{display:block}
+  .hero-img{background-position:78% center}
+  .hero::after{background:linear-gradient(180deg,rgba(42,4,16,.35) 0%,rgba(42,4,16,.85) 55%,rgba(42,4,16,.97) 100%)}
+  .hero{align-items:flex-end}
+  .mosaique{height:auto;grid-template-rows:auto}
+  .mosaique figure{aspect-ratio:3/4}
+  .mosaique figure:first-child{grid-row:auto;grid-column:1/-1;aspect-ratio:4/5}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.piste{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header id="entete">
+  <div class="wrap nav">
+    
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul id="menu">
+      <li><a href="#salon">Le salon</a></li>
+      <li><a href="#realisations">Créations</a></li>
+      <li><a href="#soins">Carte des soins</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="btn btn-plein" data-fresha>Prendre rendez-vous</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil" style="padding:0">
+  <div class="hero-img" role="img" aria-label="Mains aux ongles french rouge posées sur une serviette"></div>
+  <div class="wrap">
+    <div class="hero-txt">
+      <h1><span class="sr">Ongles Spa Nhi Nhi</span><img class="marque" src="logo-nhinhi-blanc.png" alt="" width="1200" height="379"></h1>
+      <p class="accroche">Salon de beauté des ongles à Saint-Bruno-de-Montarville. Manucure, pédicure et pose d'ongles réalisées avec précision, dans un cadre apaisant.</p>
+      <div class="actions">
+        <a href="#" class="btn btn-plein" data-fresha>Prendre rendez-vous</a>
+        <a href="tel:+14506903689" class="btn btn-ligne">450 690-3689</a>
+      </div>
+      <p class="adresse">24, boulevard Clairevue Ouest, Saint-Bruno-de-Montarville</p>
+    </div>
+  </div>
+</section>
+
+<section class="salon" id="salon">
+  <div class="wrap salon-grille">
+    <div class="salon-txt">
+      <h2>Le salon</h2>
+      <p>Au cœur de Saint-Bruno-de-Montarville, Ongles Spa Nhi Nhi vous accueille dans un espace lumineux et feutré, pensé pour la détente. Chaque cliente dispose de son propre poste et de l'attention entière de sa technicienne, du premier geste à la touche finale.</p>
+      <p>L'hygiène y est une exigence : les instruments sont désinfectés entre chaque rendez-vous et le linge est renouvelé à chaque soin.</p>
+      <ul>
+        <li>Fauteuils de pédicure avec massage intégré</li>
+        <li>Plusieurs centaines de teintes, en vernis classique et en gel</li>
+        <li>Accueil personnalisé et attentionné</li>
+      </ul>
+    </div>
+    <div class="mosaique">
+      <figure><img src="salon-pedicure.jpg" alt="Espace pédicure et ses fauteuils massants" loading="lazy"><figcaption>Espace pédicure</figcaption></figure>
+      <figure><img src="salon-manucure.jpg" alt="Postes de manucure avec fauteuils rouges et lampes" loading="lazy"><figcaption>Espace manucure</figcaption></figure>
+      <figure><img src="salon-accueil.jpg" alt="Comptoir d'accueil devant le mur de vernis" loading="lazy"><figcaption>Réception</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="realisations bokeh" id="realisations">
+  <div class="wrap">
+    <div class="tete">
+      <div>
+        <h2>Nos créations</h2>
+        <p class="intro">Un aperçu du travail réalisé en salon. Retrouvez nos plus récentes créations sur <a href="https://www.instagram.com/onglesspanhinhi/?hl=fr-ca" target="_blank" rel="noopener">Instagram</a> et <a href="https://www.facebook.com/onglesspanhinhi/" target="_blank" rel="noopener">Facebook</a>.</p>
+      </div>
+      <div class="fleches">
+        <button type="button" class="prec" aria-label="Photo précédente">‹</button>
+        <button type="button" class="suiv" aria-label="Photo suivante">›</button>
+      </div>
+    </div>
+    <div class="scene" id="scene" aria-roledescription="carrousel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="soins bokeh" id="soins">
+  <div class="wrap">
+    <h2>La carte des soins</h2>
+    <p class="intro">Chaque soin comprend la mise en forme de l'ongle, l'entretien des cuticules et la finition de votre choix.</p>
+    <div class="onglets" role="tablist" aria-label="Catégories de soins">
+      <button role="tab" id="t-mains" aria-controls="p-mains" aria-selected="true">Mains</button>
+      <button role="tab" id="t-pieds" aria-controls="p-pieds" aria-selected="false" tabindex="-1">Pieds</button>
+    </div>
+
+    <div class="panneau entre" id="p-mains" role="tabpanel" aria-labelledby="t-mains">
+      <div class="photo"><img src="realisation-8.jpg" alt="Manucure rouge avec ongle accent à cœurs" loading="lazy"></div>
+      <div>
+        <p class="sous">Soins des mains et pose d'ongles</p>
+        <p class="desc">Des mains impeccables, de la manucure au fini lustré. Pour la pose, longueur, forme et design sont réalisés sur mesure : amande, carré ou stiletto, french revisitée ou motifs peints à la main.</p>
+        <ul class="pilules"><li>Manucure classique</li><li>Manucure spa</li><li>Vernis gel longue tenue</li><li>Pose de vernis</li><li>Soin des cuticules</li><li>Pose complète en gel</li><li>Pose complète en acrylique</li><li>Remplissage</li><li>French</li><li>Nail art</li><li>Brillants et strass</li></ul>
+        <a href="#" class="btn btn-plein" data-fresha>Prendre rendez-vous</a>
+      </div>
+    </div>
+
+    <div class="panneau" id="p-pieds" role="tabpanel" aria-labelledby="t-pieds" hidden>
+      <div class="photo"><img src="salon-pedicure.jpg" alt="Fauteuils de pédicure spa" loading="lazy"></div>
+      <div>
+        <p class="sous">Soins des pieds</p>
+        <p class="desc">Bain relaxant, exfoliation et massage, confortablement installée dans un fauteuil massant. Un véritable moment de détente.</p>
+        <ul class="pilules"><li>Pédicure classique</li><li>Pédicure spa</li><li>Pédicure avec vernis gel</li><li>Forfait manucure et pédicure</li></ul>
+        <a href="#" class="btn btn-plein" data-fresha>Prendre rendez-vous</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="fond" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="pied">
+      <div>
+        <a href="#accueil" class="logo" aria-label="Ongles Spa Nhi Nhi, retour en haut"><img src="logo-nhinhi-blanc-petit.png" alt="" width="420" height="133"></a>
+        <p style="margin-top:14px"><a href="https://maps.google.com/?q=24%20Boulevard%20Clairevue%20O%2C%20Saint-Bruno-de-Montarville%2C%20QC%20J3V%201P8" target="_blank" rel="noopener">24, boulevard Clairevue Ouest<br>Saint-Bruno-de-Montarville (Québec) J3V 1P8</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a class="tel" href="tel:+14506903689">450 690-3689</a>
+        <a href="#" class="btn btn-plein" data-fresha>Prendre rendez-vous</a>
+      </div>
+      <div>
+        <h3>Nous suivre</h3>
+        <div class="reseaux">
+          <a href="https://www.instagram.com/onglesspanhinhi/?hl=fr-ca" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/onglesspanhinhi/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <p class="copy">© <span id="an"></span> Ongles Spa Nhi Nhi. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+/* ---- En-tête qui se remplit au défilement ---- */
+const entete=document.getElementById('entete');
+const surDefil=()=>entete.classList.toggle('plein',scrollY>40);
+addEventListener('scroll',surDefil,{passive:true});surDefil();
+
+/* ---- Menu mobile ---- */
+const menuBtn=document.querySelector('.menu-btn'),menu=document.getElementById('menu');
+menuBtn.addEventListener('click',()=>{const o=menu.classList.toggle('ouvert');menuBtn.setAttribute('aria-expanded',o)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('ouvert');menuBtn.setAttribute('aria-expanded',false)}));
+
+/* ---- Carrousel : ajoutez vos fichiers (à la racine du dépôt) dans cette liste ---- */
+const REALISATIONS=[
+  {src:'realisation-1.jpg',alt:'French chromée prune avec ongles à paillettes rosées'},
+  {src:'realisation-2.jpg',alt:'French verte avec motifs ondulés'},
+  {src:'realisation-3.jpg',alt:'French blanche à double ligne'},
+  {src:'realisation-4.jpg',alt:'French asymétrique multicolore pastel'},
+  {src:'realisation-5.jpg',alt:'French amande nude, crème et bordeaux'},
+  {src:'realisation-6.jpg',alt:'Ongles stiletto chocolat avec french en V'},
+  {src:'realisation-7.jpg',alt:'French blanche et paillettes or rose avec strass'},
+  {src:'realisation-8.jpg',alt:'Rouge classique avec ongle accent à cœurs'},
+  {src:'realisation-9.jpg',alt:'Noir lustré avec ongle accent à confettis'}
+];
+const scene=document.getElementById('scene');
+const figs=REALISATIONS.map((r,i)=>{const f=document.createElement('figure');f.innerHTML=`<img src="${r.src}" alt="${r.alt}" ${i>2?'loading="lazy"':''}>`;scene.appendChild(f);return f});
+let courant=0;const n=figs.length;
+const afficher=i=>{courant=(i+n)%n;figs.forEach((f,j)=>{f.className=j===courant?'centre':j===(courant-1+n)%n?'avant':j===(courant+1)%n?'apres':'';f.setAttribute('aria-hidden',j!==courant)})};
+figs.forEach(f=>f.addEventListener('click',()=>{if(f.classList.contains('avant'))afficher(courant-1);if(f.classList.contains('apres'))afficher(courant+1)}));
+document.querySelector('.fleches .prec').onclick=()=>afficher(courant-1);
+document.querySelector('.fleches .suiv').onclick=()=>afficher(courant+1);
+let x0=null;scene.addEventListener('pointerdown',e=>x0=e.clientX);
+scene.addEventListener('pointerup',e=>{if(x0===null)return;const d=e.clientX-x0;if(Math.abs(d)>40)afficher(courant+(d<0?1:-1));x0=null});
+afficher(0);
+
+/* ---- Onglets des soins ---- */
+const tabs=[...document.querySelectorAll('.onglets [role=tab]')];
+document.querySelectorAll('.pilules').forEach(ul=>[...ul.children].forEach((li,i)=>li.style.setProperty('--i',i)));
+const choisir=t=>{tabs.forEach(b=>{const on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;
+  const p=document.getElementById(b.getAttribute('aria-controls'));p.hidden=!on;p.classList.remove('entre');if(on){void p.offsetWidth;p.classList.add('entre')}})};
+tabs.forEach((t,i)=>{t.onclick=()=>choisir(t);t.onkeydown=e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){const n=tabs[(i+d+tabs.length)%tabs.length];choisir(n);n.focus()}}});
+
+/* ---- Réservation : collez ici le lien Fresha du salon quand le compte sera actif (lien qui commence par https://www.fresha.com/a/...).
+   Tant que c'est vide, les boutons « Prendre rendez-vous » appellent le salon. ---- */
+const FRESHA_URL='';
+document.querySelectorAll('[data-fresha]').forEach(a=>{
+  if(FRESHA_URL){a.href=FRESHA_URL;a.target='_blank';a.rel='noopener'}
+  else{a.href='tel:+14506903689'}
+});
+document.getElementById('an').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
