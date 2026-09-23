@@ -182,14 +182,33 @@ footer .wrap{position:relative;z-index:2}
   .nav ul li{width:100%;text-align:center}
   .nav ul a{display:block;padding:14px}
   .menu-btn{display:block}
-  .hero-img{background-position:78% center}
-  .hero::after{background:linear-gradient(180deg,rgba(42,4,16,.35) 0%,rgba(42,4,16,.85) 55%,rgba(42,4,16,.97) 100%)}
   .hero{align-items:flex-end}
   .mosaique{height:auto;grid-template-rows:auto}
   .mosaique figure{aspect-ratio:3/4}
   .mosaique figure:first-child{grid-row:auto;grid-column:1/-1;aspect-ratio:4/5}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.piste{scroll-behavior:auto}}
+@media (max-width:760px){
+  /* Hero : on laisse respirer la photo */
+  .hero-img{background-position:74% center}
+  .hero::after{background:linear-gradient(180deg,rgba(42,4,16,0) 0%,rgba(42,4,16,0) 38%,rgba(42,4,16,.75) 62%,rgba(42,4,16,.96) 100%)}
+  .hero-txt{padding:0 0 calc(env(safe-area-inset-bottom,0px) + 36px)}
+  .hero .marque{width:min(62vw,250px)}
+  .hero h1{margin-bottom:.8em}
+  .hero p.accroche{font-size:1rem;margin-bottom:1.2em}
+  .hero .actions .btn{padding:.75em 1.25em;font-size:.95rem}
+  .hero .adresse{margin-top:1.2em;font-size:.85rem}
+  /* Soins : plus compact */
+  .onglets{margin:22px 0 20px}
+  .onglets button{font-size:2rem}
+  .panneau .photo{display:none}
+  .panneau p.desc{margin-bottom:1.1em;font-size:.97rem}
+  .pilules{gap:8px;margin-bottom:1.2em}
+  .pilules li{padding:.5em .85em;font-size:.88rem}
+  .pilules:not(.tout) li:nth-child(n+7){display:none}
+  .panneau .voir-tout{display:inline-block}
+}
+.voir-tout{display:none;background:none;border:0;color:var(--lueur);font:500 .92rem var(--corps);text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin:-4px 0 1.4em}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -351,7 +370,12 @@ afficher(0);
 
 /* ---- Onglets des soins ---- */
 const tabs=[...document.querySelectorAll('.onglets [role=tab]')];
-document.querySelectorAll('.pilules').forEach(ul=>[...ul.children].forEach((li,i)=>li.style.setProperty('--i',i)));
+document.querySelectorAll('.pilules').forEach(ul=>{
+  [...ul.children].forEach((li,i)=>li.style.setProperty('--i',i));
+  const reste=ul.children.length-6;
+  if(reste>0){const b=document.createElement('button');b.type='button';b.className='voir-tout';b.textContent=`Voir les ${reste} autres soins`;
+    b.onclick=()=>{ul.classList.add('tout');b.remove()};ul.after(b)}
+});
 const choisir=t=>{tabs.forEach(b=>{const on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;
   const p=document.getElementById(b.getAttribute('aria-controls'));p.hidden=!on;p.classList.remove('entre');if(on){void p.offsetWidth;p.classList.add('entre')}})};
 tabs.forEach((t,i)=>{t.onclick=()=>choisir(t);t.onkeydown=e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){const n=tabs[(i+d+tabs.length)%tabs.length];choisir(n);n.focus()}}});
